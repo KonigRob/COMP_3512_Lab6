@@ -17,11 +17,11 @@ class Tour : public City{
 	City permutation[CITIES_IN_TOUR];
 
 public:
-	void shuffle_cities(City);
+	void shuffle_cities(City*);
 	double get_distance_between_cities(City, City);
 	double get_tour_distance(Tour);
 	int determine_fitness(Tour*, int);
-	void swap_cities(int, int , City);
+	void swap_cities(int, int , City*);
 	Tour* select_parents(Tour*);
 	Tour crossover(Tour);
 	void mutate(Tour);

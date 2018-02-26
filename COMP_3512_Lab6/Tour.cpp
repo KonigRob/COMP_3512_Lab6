@@ -1,9 +1,15 @@
 #include "Tour.hpp"
 
 
-void Tour::shuffle_cities(City)
+void Tour::shuffle_cities(City* permutation)
 {
+	int index_one = 0, index_two = 0;
+	for (int i = 0; i < SHUFFLES; ++i) {
+		index_one = rand() % CITIES_IN_TOUR;
+		index_two = rand() % CITIES_IN_TOUR;
 
+		swap_cities(index_one, index_two, permutation);
+	}
 }
 
 double Tour::get_distance_between_cities(City, City)
@@ -33,8 +39,15 @@ int Tour::determine_fitness(Tour* population, int population_size)
 	return shortest_tour_in_population;
 }
 
-void Tour::swap_cities(int, int, City)
+void Tour::swap_cities(int index_one, int index_two, City* permutation)
 {
+	//can we use the swap method here?  Try after.
+	City* tmp = new City;
+	*tmp = *(permutation + index_one);
+	*(permutation + index_one) = *(permutation + index_two);
+	*(permutation + index_two) = *tmp;
+	delete tmp;
+
 }
 
 Tour* Tour::select_parents(Tour* population)
