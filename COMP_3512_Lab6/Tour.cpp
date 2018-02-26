@@ -18,9 +18,14 @@ double Tour::get_distance_between_cities(City x, City y)
 		pow((double)x.getxCoord() - y.getyCoord(), 2.0));
 }
 
-double Tour::get_tour_distance(Tour)
+double Tour::get_tour_distance(Tour city_list)
 {
-	return 0.0;
+	double distance = 0.0;
+	for (int i = 0; i < CITIES_IN_TOUR; ++i) {
+		distance += get_distance_between_cities
+		(city_list.permutation[i], city_list.permutation[(i + 1) % CITIES_IN_TOUR]);
+	}
+	return distance;
 }
 
 int Tour::determine_fitness(Tour* population, int population_size)
