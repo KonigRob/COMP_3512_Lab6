@@ -12,9 +12,10 @@ void Tour::shuffle_cities(City* permutation)
 	}
 }
 
-double Tour::get_distance_between_cities(City, City)
+double Tour::get_distance_between_cities(City x, City y)
 {
-	return 0.0;
+	return sqrt(pow((double)x.getxCoord() - y.getxCoord(), 2.0) +
+		pow((double)x.getxCoord() - y.getyCoord(), 2.0));
 }
 
 double Tour::get_tour_distance(Tour)

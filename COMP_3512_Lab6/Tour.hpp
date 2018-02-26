@@ -12,6 +12,7 @@ class Tour : public City{
 	static constexpr int NUMBER_OF_ELITES = 1;
 	static constexpr int NUMBER_OF_PARENTS = 2;
 	static constexpr int PARENT_POOL_SIZE = 5;
+	static constexpr int SHUFFLES = 32;
 	const double FITNESS_SCALER = 10000.0;
 	double fitness;
 	City permutation[CITIES_IN_TOUR];
