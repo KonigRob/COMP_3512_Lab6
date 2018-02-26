@@ -14,6 +14,7 @@ class Tour : public City{
 	static constexpr int PARENT_POOL_SIZE = 5;
 	static constexpr int SHUFFLES = 32;
 	const double FITNESS_SCALER = 10000.0;
+	const double MUTATION_RATE = 0.15;
 	double fitness;
 	City permutation[CITIES_IN_TOUR];
 
@@ -24,8 +25,8 @@ public:
 	int determine_fitness(Tour*, int);
 	void swap_cities(int, int , City*);
 	Tour* select_parents(Tour*);
-	Tour crossover(Tour);
-	void mutate(Tour);
+	Tour* crossover(Tour*);
+	void mutate(Tour*);
 	int contains_city(Tour*, int, City*);
 	double random(double, double);
 };

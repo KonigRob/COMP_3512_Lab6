@@ -69,17 +69,39 @@ Tour* Tour::select_parents(Tour* population)
 	return parents;
 }
 
-Tour Tour::crossover(Tour)
+Tour* Tour::crossover(Tour* parents)
 {
-	return Tour();
+	Tour* child = new Tour;
+	int boundary_index = random(0.0, CITIES_IN_TOUR - 1);
+
+	child->fitness = 0.0;
+
+	for (int i = 0; i < boundary_index; ++i) {
+		child->permutation[i] = parents->permutation[i];
+	}
+
+	while (boundary_index < CITIES_IN_TOUR) {
+		for (int i = 0; i < CITIES_IN_TOUR; ++i) {
+			if (!contains_city(child, boundary_index, &((parents + 1)->permutation[i]))) {
+				child->permutation[boundary_index] = (parents + 1)->permutation[i];
+				boundary_index++;
+			}
+		}
+	}
+	return child;
 }
 
-void Tour::mutate(Tour population)
+void Tour::mutate(Tour* population)
 {
 	double mutates = 0.0;
+	int k = 0;
 	for (int i = 0 + NUMBER_OF_ELITES; i < POPULATION_SIZE; ++i) {
 		for (int j = 0; j < CITIES_IN_TOUR; ++j) {
-			
+			mutates = random(0.0, rand()) / (double)RAND_MAX;
+			if (mutates <= MUTATION_RATE) {
+				k = random(0.0, CITIES_IN_TOUR);
+				swap_cities(j, k, (population + i)->permutation);
+			}
 		}
 	}
 
