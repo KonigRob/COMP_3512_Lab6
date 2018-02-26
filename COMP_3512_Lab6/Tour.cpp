@@ -5,8 +5,8 @@ void Tour::shuffle_cities(City* permutation)
 {
 	int index_one = 0, index_two = 0;
 	for (int i = 0; i < SHUFFLES; ++i) {
-		index_one = rand() % CITIES_IN_TOUR;
-		index_two = rand() % CITIES_IN_TOUR;
+		index_one = random(0.0, CITIES_IN_TOUR - 1);
+		index_two = random(0.0, CITIES_IN_TOUR - 1);
 
 		swap_cities(index_one, index_two, permutation);
 	}
@@ -59,7 +59,7 @@ Tour* Tour::select_parents(Tour* population)
 
 	for (int i = 0; i < NUMBER_OF_PARENTS; ++i) {
 		for (int j = 0; j < PARENT_POOL_SIZE; ++j) {
-			int k = rand() % POPULATION_SIZE;
+			int k = random(0.0, POPULATION_SIZE - 1);
 			*(parent_pool + j) = *(population + k);
 		}
 		parent_index = determine_fitness(parent_pool, PARENT_POOL_SIZE);
@@ -104,7 +104,6 @@ void Tour::mutate(Tour* population)
 			}
 		}
 	}
-
 }
 
 int Tour::contains_city(Tour* candidate_tour, int length, City* candidate_city)
@@ -124,5 +123,4 @@ double Tour::random(double x, double y)
 		std::default_random_engine a(time(0));
 		std::uniform_real_distribution<double> b(x, y);
 		return b(a);
-
 }
