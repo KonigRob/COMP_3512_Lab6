@@ -18,10 +18,10 @@
     <ClCompile Include="COMP_3512_Lab6.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="City.cpp">
+    <ClCompile Include="Tour.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Tour.cpp">
+    <ClCompile Include="TesterGA.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

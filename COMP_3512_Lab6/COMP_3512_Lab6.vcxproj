@@ -147,8 +147,8 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="City.cpp" />
     <ClCompile Include="COMP_3512_Lab6.cpp" />
+    <ClCompile Include="TesterGA.cpp" />
     <ClCompile Include="Tour.cpp" />
   </ItemGroup>
   <ItemGroup>
